@@ -41,7 +41,11 @@ namespace Perceptron
 			bmp = new Bitmap (pictureBox1.Width,pictureBox1.Height);
 			gf= Graphics.FromImage(bmp);
 			gf.Clear(Color.Transparent);
-			gf.FillEllipse(b, new RectangleF(10,10, 5, 5));
+			gf.FillEllipse(b, new RectangleF(e.X,e.Y, 15, 15));
+			
+			pictureBox1.Image = bmp;
+			pictureBox1.Refresh();
+				
 		}
 		
 		
