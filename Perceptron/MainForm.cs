@@ -2,7 +2,7 @@
  * Created by SharpDevelop.
  * User: mfern
  * Date: 2/2/2022
- * Time: 8:22 PM
+ * Time: 8:24 PM
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
@@ -18,16 +18,14 @@ namespace Perceptron
 	/// </summary>
 	public partial class MainForm : Form
 	{
+		window w= new window();
 		public MainForm()
 		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
-			InitializeComponent();
 			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
+			InitializeComponent();
+			this.Hide();
+			w.ShowDialog();
+			this.Close();
 		}
 	}
 }
