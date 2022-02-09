@@ -139,7 +139,7 @@ namespace Perceptron
 				lr = float.Parse(textBoxLearningR.Text);
 				mEp = Int32.Parse(textBoxEpochM.Text);
 				
-				//MessageBox.Show("Inicia el perceptron"+" lr= "+lr+" epm= "+mEp);
+				MessageBox.Show("Inicia el perceptron"+" lr= "+lr+" epm= "+mEp);
 			}
 			
 		}

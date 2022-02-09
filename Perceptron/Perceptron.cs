@@ -18,13 +18,19 @@ namespace Perceptron
 	/// </summary>
 	public class Perceptron
 	{
+		double theta;
+		int limitEpoch;// va cambiar dependiendo del usuario
     	Random random = new Random();
-		public Perceptron()//v_x,v_y, theta 
+    	List<Entry> entryList= new List<Entry>();
+    	List<double[]> x= new List<double[]>();//entradas
+		List<int> y= new List<int>();//salidas deseadas
+		List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
+		
+		public Perceptron(double theta, int epoch)//v_x,v_y, theta 
 		{
-			
-			
+			this.theta=theta;
+			this.limitEpoch=epoch;
 		}
-
 		List<float> change_values(List<float> v_w, double theta, double err, double[] x)
 		{
 			double nw=0;
@@ -38,19 +44,15 @@ namespace Perceptron
 			return n_v_w;
 		}
 
-		public void inicialize(){
+		public void inicialize(List<Entry> el){
 			
-			List<double[]> x= new List<double[]>();//entradas
-			List<int> y= new List<int>();//salidas deseadas
-			List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
-			double theta=0.1;
 			bool done=false;
 			int epoch=0;
-			int limitEpoch=100;// va cambiar dependiendo del usuario
-			double[] obj=new double[]{1.0,1.0};
 			double have=0,err;
-			x.Add(obj);
-			y.Add(1);
+//			double[] obj=new double[]{1.0,1.0};
+//			x.Add(obj);
+//			y.Add(1);
+			
 			
 			
 			while(done == false && 	epoch<limitEpoch ){//revisa tu condicion tochoii
@@ -60,6 +62,7 @@ namespace Perceptron
 					if((int)err!=0){
 						done=true;
 						v_w=change_values(v_w,theta,err,x[i]);
+						//drawline(v_w)
 					}
 				}
 				epoch++;
