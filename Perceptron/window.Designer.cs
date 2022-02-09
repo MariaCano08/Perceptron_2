@@ -21,6 +21,7 @@ namespace Perceptron
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button buttonInicializeW;
 		private System.Windows.Forms.Button buttonInit;
+		private System.Windows.Forms.Button buttonEvaluatePairs;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -50,6 +51,7 @@ namespace Perceptron
 			this.label2 = new System.Windows.Forms.Label();
 			this.buttonInicializeW = new System.Windows.Forms.Button();
 			this.buttonInit = new System.Windows.Forms.Button();
+			this.buttonEvaluatePairs = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -121,11 +123,23 @@ namespace Perceptron
 			this.buttonInit.UseVisualStyleBackColor = true;
 			this.buttonInit.Click += new System.EventHandler(this.ButtonInitClick);
 			// 
+			// buttonEvaluatePairs
+			// 
+			this.buttonEvaluatePairs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonEvaluatePairs.Location = new System.Drawing.Point(743, 263);
+			this.buttonEvaluatePairs.Name = "buttonEvaluatePairs";
+			this.buttonEvaluatePairs.Size = new System.Drawing.Size(100, 27);
+			this.buttonEvaluatePairs.TabIndex = 7;
+			this.buttonEvaluatePairs.Text = "Evaluar";
+			this.buttonEvaluatePairs.UseVisualStyleBackColor = true;
+			this.buttonEvaluatePairs.Click += new System.EventHandler(this.ButtonEvaluatePairsClick);
+			// 
 			// Window
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(884, 741);
+			this.ClientSize = new System.Drawing.Size(884, 733);
+			this.Controls.Add(this.buttonEvaluatePairs);
 			this.Controls.Add(this.buttonInit);
 			this.Controls.Add(this.buttonInicializeW);
 			this.Controls.Add(this.label2);

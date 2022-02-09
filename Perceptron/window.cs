@@ -141,6 +141,10 @@ namespace Perceptron
 			}
 			
 		}
+		void ButtonEvaluatePairsClick(object sender, EventArgs e)
+		{
+			//Se evaluaran todos los pares de puntos ordenados 
+		}
 		
 
 
