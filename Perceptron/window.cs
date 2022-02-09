@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -20,35 +21,57 @@ namespace Perceptron
 		Brush b = new SolidBrush(Color.Purple);
 		Bitmap bmp;
 		Graphics gf;
+		
+		List<Entry> entryList;
+		
 		public window()
 		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
 			InitializeComponent();
+			entryList = new List<Entry>();
 			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
 		}
+		
 		void PictureBox1MouseClick(object sender, MouseEventArgs e)//escala de 30 centro 300,300
 		{	
-			MessageBox.Show(e.X.ToString()+", "+e.Y.ToString());
+			MessageBox.Show(e.X.ToString()+", "+e.Y.ToString());			
 			
-			int x=e.X/30;
-			int y= e.Y/30;
+			if(e.Button == MouseButtons.Left){ //If is LEFT - CLASS 1
+				//gf.FillEllipse(b, new RectangleF(e.X,e.Y, 15, 15));
+				entryList.Add(new Entry(e.X,e.Y,true));
+			}
+			else{ //If is RIGHT - CLASS 0
+				//gf.FillEllipse(new SolidBrush(Color.GreenYellow), new RectangleF(e.X,e.Y, 15, 15));
+				entryList.Add(new Entry(e.X,e.Y,false));
+				
+			}
+			
+			
+			drawClasses();
+			
+				
+		}
+		
+		void drawClasses(){
 			
 			bmp = new Bitmap (pictureBox1.Width,pictureBox1.Height);
 			gf= Graphics.FromImage(bmp);
 			gf.Clear(Color.Transparent);
-			gf.FillEllipse(b, new RectangleF(e.X,e.Y, 15, 15));
+			
+			for(int i = 0; i < entryList.Count; i++){
+				Entry aux = entryList[i];
+				if(aux.getClass()){ //If is LEFT - CLASS 1
+					gf.FillEllipse(b, new RectangleF(aux.getX(),aux.getY(), 15, 15));
+				}
+				else{ //If is RIGHT - CLASS 0
+					gf.FillEllipse(new SolidBrush(Color.GreenYellow), new RectangleF(aux.getX(),aux.getY(), 15, 15));
+					
+				}
+				MessageBox.Show(aux.getX1()+" , "+aux.getX2());
+			}
 			
 			pictureBox1.Image = bmp;
 			pictureBox1.Refresh();
-				
 		}
-		
-		
 		
 		void PictureBox1Paint(object sender, PaintEventArgs e)
 		{
@@ -62,6 +85,7 @@ namespace Perceptron
 			double inc=0.10;
 			e.Graphics.TranslateTransform(x_c,y_c);
 			//e.Graphics.ScaleTransform(-1,1);
+			
 			
 			e.Graphics.DrawLine(pen_,x_c*-1,0,x_c*2,0);
 			e.Graphics.DrawLine(pen_,0,y_c,0,y_c*-1);
