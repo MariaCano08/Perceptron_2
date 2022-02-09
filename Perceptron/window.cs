@@ -15,21 +15,14 @@ namespace Perceptron
 	/// <summary>
 	/// Description of window.
 	/// </summary>
-	public partial class window : Form
+	public partial class Window : Form
 	{
 		Brush b = new SolidBrush(Color.Purple);
 		Bitmap bmp;
 		Graphics gf;
-		public window()
+		public Window()
 		{
-			//
-			// The InitializeComponent() call is required for Windows Forms designer support.
-			//
 			InitializeComponent();
-			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
 		}
 		void PictureBox1MouseClick(object sender, MouseEventArgs e)//escala de 30 centro 300,300
 		{	
@@ -43,8 +36,14 @@ namespace Perceptron
 			gf.Clear(Color.Transparent);
 			gf.FillEllipse(b, new RectangleF(e.X,e.Y, 15, 15));
 			
+			Perceptron p= new Perceptron();
+			MessageBox.Show("Im here");
+			p.inicialize();
+			
 			pictureBox1.Image = bmp;
 			pictureBox1.Refresh();
+			
+			
 				
 		}
 		

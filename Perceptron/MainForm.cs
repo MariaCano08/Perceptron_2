@@ -18,7 +18,7 @@ namespace Perceptron
 	/// </summary>
 	public partial class MainForm : Form
 	{
-		window w= new window();
+		Window w= new Window();
 		public MainForm()
 		{
 			

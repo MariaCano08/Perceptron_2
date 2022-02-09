@@ -23,4 +23,11 @@ C:\Users\lopez\Documents\INCO\9. noveno 2022A\IA 2\Programas\1. Perceptron\Perce
 C:\Users\lopez\Documents\INCO\9. noveno 2022A\IA 2\Programas\1. Perceptron\Perceptron_2\Perceptron\obj\Debug\Perceptron.csproj.GenerateResource.Cache
 C:\Users\lopez\Documents\INCO\9. noveno 2022A\IA 2\Programas\1. Perceptron\Perceptron_2\Perceptron\obj\Debug\Perceptron.exe
 C:\Users\lopez\Documents\INCO\9. noveno 2022A\IA 2\Programas\1. Perceptron\Perceptron_2\Perceptron\obj\Debug\Perceptron.pdb
->>>>>>> dfdf474c9980286d602a0b5457e4dfc504e35b41
+D:\CUCEI\2022A\IA 2\Perceptron_2\Perceptron\bin\Debug\Perceptron.exe.config
+D:\CUCEI\2022A\IA 2\Perceptron_2\Perceptron\bin\Debug\Perceptron.exe
+D:\CUCEI\2022A\IA 2\Perceptron_2\Perceptron\bin\Debug\Perceptron.pdb
+D:\CUCEI\2022A\IA 2\Perceptron_2\Perceptron\obj\Debug\Perceptron.csprojResolveAssemblyReference.cache
+D:\CUCEI\2022A\IA 2\Perceptron_2\Perceptron\obj\Debug\Perceptron.Window.resources
+D:\CUCEI\2022A\IA 2\Perceptron_2\Perceptron\obj\Debug\Perceptron.csproj.GenerateResource.Cache
+D:\CUCEI\2022A\IA 2\Perceptron_2\Perceptron\obj\Debug\Perceptron.exe
+D:\CUCEI\2022A\IA 2\Perceptron_2\Perceptron\obj\Debug\Perceptron.pdb
