@@ -16,7 +16,7 @@ namespace Perceptron
 	/// <summary>
 	/// Description of window.
 	/// </summary>
-	public partial class window : Form
+	public partial class Window : Form
 	{
 		Brush b = new SolidBrush(Color.Purple);
 		Bitmap bmp;
@@ -24,7 +24,7 @@ namespace Perceptron
 		
 		List<Entry> entryList;
 		
-		public window()
+		public Window()
 		{
 			InitializeComponent();
 			entryList = new List<Entry>();
@@ -68,6 +68,10 @@ namespace Perceptron
 				}
 				MessageBox.Show(aux.getX1()+" , "+aux.getX2());
 			}
+			
+			Perceptron p= new Perceptron();
+			MessageBox.Show("Im here");
+			p.inicialize();
 			
 			pictureBox1.Image = bmp;
 			pictureBox1.Refresh();

@@ -8,7 +8,7 @@
  */
 namespace Perceptron
 {
-	partial class window
+	partial class Window
 	{
 		/// <summary>
 		/// Designer variable used to keep track of non-visual components.
