@@ -24,9 +24,22 @@ namespace Perceptron
 			
 			
 		}
+
+		List<float> change_values(List<float> v_w, double theta, double err, double[] x)
+		{
+			double nw=0;
+			List<float> n_v_w= new List<float>();
+			for(int i=1;i<v_w.Count;i++){
+				nw=v_w[i]+theta*err*x[i-1];
+				n_v_w.Add((float)nw);
+				
+				
+			}
+			return n_v_w;
+		}
+
 		public void inicialize(){
 			
-			MessageBox.Show("Deberias 0");
 			List<double[]> x= new List<double[]>();//entradas
 			List<int> y= new List<int>();//salidas deseadas
 			List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
@@ -35,13 +48,20 @@ namespace Perceptron
 			int epoch=0;
 			int limitEpoch=100;// va cambiar dependiendo del usuario
 			double[] obj=new double[]{1.0,1.0};
-			double have=0;
+			double have=0,err;
 			x.Add(obj);
-			while(done == false || 	epoch<limitEpoch ){//revisa tu condicion tochoii
+			y.Add(1);
+			
+			
+			while(done == false && 	epoch<limitEpoch ){//revisa tu condicion tochoii
 				for(int i=0;i<x.Count;i++){
 					have=pw(x[i],v_w);//obtenida
+					err=y[i]-have;
+					if((int)err!=0){
+						done=true;
+						v_w=change_values(v_w,theta,err,x[i]);
+					}
 				}
-				break;
 				epoch++;
 			}
 			MessageBox.Show("Never");

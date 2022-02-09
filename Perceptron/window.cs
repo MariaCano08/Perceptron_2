@@ -26,7 +26,7 @@ namespace Perceptron
 		}
 		void PictureBox1MouseClick(object sender, MouseEventArgs e)//escala de 30 centro 300,300
 		{	
-			MessageBox.Show(e.X.ToString()+", "+e.Y.ToString());
+			//MessageBox.Show(e.X.ToString()+", "+e.Y.ToString());
 			
 			int x=e.X/30;
 			int y= e.Y/30;
@@ -37,7 +37,6 @@ namespace Perceptron
 			gf.FillEllipse(b, new RectangleF(e.X,e.Y, 15, 15));
 			
 			Perceptron p= new Perceptron();
-			MessageBox.Show("Im here");
 			p.inicialize();
 			
 			pictureBox1.Image = bmp;
