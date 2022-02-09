@@ -9,9 +9,9 @@ namespace Perceptron
 		
 		int X; //Coordenada en el picturebox
 		int Y; //Coordenada en el picturebox
-		float x_f; //X1 
-		float y_f; //X2
-		bool class_; //Salida deseada 
+		float x1; //X1 
+		float x2; //X2
+		bool class_; //Salida deseada True == 1, False == 0
 		
 		public Entry(){
 			
@@ -20,6 +20,8 @@ namespace Perceptron
 		public Entry(int X, int Y, bool class_){
 			this.X = X;
 			this.Y = Y;
+			x1 = calculateScale(true,X);
+			x2 = calculateScale(false,Y);
 			this.class_ = class_;
 		}
 		
@@ -39,20 +41,20 @@ namespace Perceptron
 			this.Y = Y;
 		}
 		
-		public float getX_f(){
-			return x_f;
+		public float getX1(){
+			return x1;
 		}
 		
-		public void setX_f(float x_f){
-			this.x_f = x_f;
+		public void setX1(float x1){
+			this.x1 = x1;
 		}
 		
-		public float getY_f(){
-			return y_f;
+		public float getX2(){
+			return x2;
 		}
 		
-		public void setY_f(float y_f){
-			this.y_f = y_f;
+		public void setX2(float x2){
+			this.x2 = x2;
 		}
 		
 		public bool getClass(){
@@ -61,6 +63,19 @@ namespace Perceptron
 		
 		public void setClass(bool class_){
 			this.class_ = class_;
+		}
+		
+		float calculateScale(bool axis, int pos){
+			float value;
+			if(axis){ // True - X
+				value = ((float)pos / 300) -1;
+			}
+			else{// False - Y
+				value = (((float)pos / 300) -1)* -1;
+			}
+			
+			return value;
+			
 		}
 	}
 }

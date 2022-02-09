@@ -64,7 +64,7 @@ namespace Perceptron
 				}
 				epoch++;
 			}
-			MessageBox.Show("Never");
+			//MessageBox.Show("Never");
 		}
 		
 		
