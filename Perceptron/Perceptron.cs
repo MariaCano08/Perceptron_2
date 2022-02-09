@@ -26,7 +26,7 @@ namespace Perceptron
 		}
 		public void inicialize(){
 			
-			MessageBox.Show("Deberias 0");
+			//MessageBox.Show("Deberias 0");
 			List<double[]> x= new List<double[]>();//entradas
 			List<int> y= new List<int>();//salidas deseadas
 			List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
@@ -44,7 +44,7 @@ namespace Perceptron
 				break;
 				epoch++;
 			}
-			MessageBox.Show("Never");
+			//MessageBox.Show("Never");
 		}
 		
 		

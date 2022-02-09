@@ -15,6 +15,12 @@ namespace Perceptron
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
 		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.TextBox textBoxLearningR;
+		private System.Windows.Forms.TextBox textBoxEpochM;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Button buttonInicializeW;
+		private System.Windows.Forms.Button buttonInit;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -38,6 +44,12 @@ namespace Perceptron
 		private void InitializeComponent()
 		{
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.textBoxLearningR = new System.Windows.Forms.TextBox();
+			this.textBoxEpochM = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.buttonInicializeW = new System.Windows.Forms.Button();
+			this.buttonInit = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -53,16 +65,79 @@ namespace Perceptron
 			this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBox1Paint);
 			this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox1MouseClick);
 			// 
-			// window
+			// textBoxLearningR
+			// 
+			this.textBoxLearningR.Location = new System.Drawing.Point(743, 66);
+			this.textBoxLearningR.Name = "textBoxLearningR";
+			this.textBoxLearningR.Size = new System.Drawing.Size(100, 20);
+			this.textBoxLearningR.TabIndex = 1;
+			// 
+			// textBoxEpochM
+			// 
+			this.textBoxEpochM.Location = new System.Drawing.Point(743, 106);
+			this.textBoxEpochM.Name = "textBoxEpochM";
+			this.textBoxEpochM.Size = new System.Drawing.Size(100, 20);
+			this.textBoxEpochM.TabIndex = 2;
+			// 
+			// label1
+			// 
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(636, 64);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(101, 23);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "Learning rate:";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// label2
+			// 
+			this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label2.Location = new System.Drawing.Point(620, 99);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(117, 33);
+			this.label2.TabIndex = 4;
+			this.label2.Text = "Epocas maximas:";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// buttonInicializeW
+			// 
+			this.buttonInicializeW.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonInicializeW.Location = new System.Drawing.Point(743, 156);
+			this.buttonInicializeW.Name = "buttonInicializeW";
+			this.buttonInicializeW.Size = new System.Drawing.Size(100, 27);
+			this.buttonInicializeW.TabIndex = 5;
+			this.buttonInicializeW.Text = "Inicializar W";
+			this.buttonInicializeW.UseVisualStyleBackColor = true;
+			this.buttonInicializeW.Click += new System.EventHandler(this.ButtonInicializeWClick);
+			// 
+			// buttonInit
+			// 
+			this.buttonInit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.buttonInit.Location = new System.Drawing.Point(743, 208);
+			this.buttonInit.Name = "buttonInit";
+			this.buttonInit.Size = new System.Drawing.Size(100, 27);
+			this.buttonInit.TabIndex = 6;
+			this.buttonInit.Text = "Iniciar ";
+			this.buttonInit.UseVisualStyleBackColor = true;
+			this.buttonInit.Click += new System.EventHandler(this.ButtonInitClick);
+			// 
+			// Window
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(884, 749);
+			this.ClientSize = new System.Drawing.Size(884, 741);
+			this.Controls.Add(this.buttonInit);
+			this.Controls.Add(this.buttonInicializeW);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.textBoxEpochM);
+			this.Controls.Add(this.textBoxLearningR);
 			this.Controls.Add(this.pictureBox1);
-			this.Name = "window";
+			this.Name = "Window";
 			this.Text = "window";
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 	}

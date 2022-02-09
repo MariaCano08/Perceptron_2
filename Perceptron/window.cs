@@ -23,12 +23,19 @@ namespace Perceptron
 		Graphics gf;
 		
 		List<Entry> entryList;
+		float lr;
+		int mEp;
+		Random rand;
+		List<float> v_w;
 		
 		public Window()
 		{
 			InitializeComponent();
 			entryList = new List<Entry>();
-			
+			lr = 0;
+			mEp = 0;
+			rand = new Random();
+			v_w = new List<float>();
 		}
 		
 		void PictureBox1MouseClick(object sender, MouseEventArgs e)//escala de 30 centro 300,300
@@ -44,11 +51,7 @@ namespace Perceptron
 				entryList.Add(new Entry(e.X,e.Y,false));
 				
 			}
-			
-			
 			drawClasses();
-			
-				
 		}
 		
 		void drawClasses(){
@@ -66,12 +69,12 @@ namespace Perceptron
 					gf.FillEllipse(new SolidBrush(Color.GreenYellow), new RectangleF(aux.getX(),aux.getY(), 15, 15));
 					
 				}
-				MessageBox.Show(aux.getX1()+" , "+aux.getX2());
+				
 			}
 			
-			Perceptron p= new Perceptron();
-			MessageBox.Show("Im here");
-			p.inicialize();
+			//Perceptron p= new Perceptron();
+			//MessageBox.Show("Im here");
+			//p.inicialize();
 			
 			pictureBox1.Image = bmp;
 			pictureBox1.Refresh();
@@ -107,6 +110,38 @@ namespace Perceptron
 				
 			}
 		}
+		
+		void ButtonInicializeWClick(object sender, EventArgs e)
+		{
+			if(entryList.Count == 0){
+				MessageBox.Show("Por favor primero ingresa los puntos a evaluar");
+			}
+			else{
+				//inicializar pesos W random
+				for(int i = 0; i < 2; i++){
+					v_w.Add((float) rand.Next(0,5)); //aun no guarda W0
+				}
+				MessageBox.Show("Vector inicializado");
+			}
+			
+		}
+		
+		
+		
+		void ButtonInitClick(object sender, EventArgs e)
+		{
+			if(textBoxLearningR.Text == "" || textBoxEpochM.Text == ""){
+				MessageBox.Show("Por favor revisa que hayas llenado los campos correctamente");
+			}
+			else{
+				lr = float.Parse(textBoxLearningR.Text);
+				mEp = Int32.Parse(textBoxEpochM.Text);
+				
+				//MessageBox.Show("Inicia el perceptron"+" lr= "+lr+" epm= "+mEp);
+			}
+			
+		}
+		
 
 
 	}
