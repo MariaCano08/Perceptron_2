@@ -63,10 +63,11 @@ namespace Perceptron
 		}
 		
 		
-		public void inicialize(List<Entry> el){
+		
+		public void inicialize(List<Entry> el, List<float> vw){
 			
 			
-			List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
+			//List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
 			bool done=false;
 			int epoch=0;
 			double have=0,err;
@@ -74,7 +75,7 @@ namespace Perceptron
 //			double[] obj=new double[]{1.0,1.0};
 //			x.Add(obj);
 //			y.Add(1);
-			//List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
+			List<float> v_w=vw;// donde la entrada es dependiente al tamaño de x
 			
 			
 			while(done == false && 	epoch<limitEpoch ){//revisa tu condicion tochoii
@@ -114,7 +115,7 @@ namespace Perceptron
 			double y_ = m * x[0] + b;
 			double y_1 = m * x[1] + b;
 			
-			Pen p = new Pen(Color.Red);
+			Pen p = new Pen(Color.Red,10);
 			
 			//gr.DrawLine(p, 10, 80, 300, 300);}
 			gr.Clear(Color.Transparent);
@@ -125,7 +126,7 @@ namespace Perceptron
 			pb1.Refresh();
 		}
 		
-		int calculateScaleInv(bool axis, double pos){
+		public int calculateScaleInv(bool axis, double pos){
 			float value;
 			if(axis){ // True - X
 				value = ((float)pos + 1) *300;
@@ -211,6 +212,7 @@ namespace Perceptron
 
 			drawClasses(pairList);
 			
+			
 		}
 		
 		void drawClasses(List<Entry> le){
@@ -219,16 +221,27 @@ namespace Perceptron
 			for(int i = 0; i < le.Count; i++){
 				Entry aux = le[i];
 				if(aux.getClass()){ //If is LEFT - CLASS 1
-					gr.FillEllipse(b, new RectangleF(aux.getX(),aux.getY(), 15, 15));
+					gr.FillEllipse(b, new RectangleF(aux.getX()-20,aux.getY()-20, 15, 15));
 				}
 				else{ //If is RIGHT - CLASS 0
-					gr.FillEllipse(new SolidBrush(Color.GreenYellow), new RectangleF(aux.getX(),aux.getY(), 15, 15));
+					gr.FillEllipse(new SolidBrush(Color.GreenYellow), new RectangleF(aux.getX()-20,aux.getY()-20, 15, 15));
 					
 				}
 				
 			}
+			double [] x_ = x[0];
+			
+			double m=-(v_wf[1]/v_wf[2]);// REVISAR CALCULO DE LINEA W
+			double b_= theta/v_wf[2];
+			double y_ = m * x_[0] + b_;
+			double y_1 = m * x_[1] + b_;
+			
+			Pen p = new Pen(Color.Red,10);
+			gr.DrawLine(p, calculateScaleInv(true,x_[0]), calculateScaleInv(false,y_), 
+			            calculateScaleInv(true,x_[1]), calculateScaleInv(false,y_1));
 			pb1.Image = bmp2;
 			pb1.Refresh();
+			
 		}
 	}
 }

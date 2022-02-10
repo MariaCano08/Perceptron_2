@@ -65,10 +65,10 @@ namespace Perceptron
 			for(int i = 0; i < entryList.Count; i++){
 				Entry aux = entryList[i];
 				if(aux.getClass()){ //If is LEFT - CLASS 1
-					gf.FillEllipse(b, new RectangleF(aux.getX(),aux.getY(), 15, 15));
+					gf.FillEllipse(b, new RectangleF(aux.getX()-20,aux.getY()-20, 15, 15));
 				}
 				else{ //If is RIGHT - CLASS 0
-					gf.FillEllipse(new SolidBrush(Color.GreenYellow), new RectangleF(aux.getX(),aux.getY(), 15, 15));
+					gf.FillEllipse(new SolidBrush(Color.GreenYellow), new RectangleF(aux.getX()-20,aux.getY()-20, 15, 15));
 					
 				}
 				
@@ -119,14 +119,47 @@ namespace Perceptron
 			}
 			else{
 				//inicializar pesos W random
-				for(int i = 0; i < 2; i++){
+				for(int i = 0; i < 3; i++){
 					v_w.Add((float) rand.Next(0,5)); //aun no guarda W0
 				}
+				
+				
+				//drawLine(v_w,lr, new double[] {entryList[0].getX1(),entryList[0].getX2()});
 				MessageBox.Show("Vector inicializado");
+				
 			}
 			
 		}
 		
+		void drawLine(List<float> v_w, double theta, double[] x){
+			double m=-(v_w[1]/v_w[2]);// REVISAR CALCULO DE LINEA W
+			double b_= theta/v_w[2];
+			double y_ = m * x[0] + b_;
+			double y_1 = m * x[1] + b_;
+			
+			Pen pe = new Pen(Color.Red,10);
+			
+			//gr.DrawLine(p, 10, 80, 300, 300);}
+			gf.Clear(Color.Transparent);
+			gf.DrawLine(pe, calculateScaleInv(true,x[0]), calculateScaleInv(false,y_), 
+			            calculateScaleInv(true,x[1]), calculateScaleInv(false,y_1));
+			
+			pictureBox1.Image = bmp;
+			pictureBox1.Refresh();
+		}
+		
+		public int calculateScaleInv(bool axis, double pos){
+			float value;
+			if(axis){ // True - X
+				value = ((float)pos + 1) *300;
+			}
+			else{// False - Y
+				value = (((float)pos * -1) +1) *300;
+			}
+			
+			return (int)value;
+			
+		}
 		
 		
 		void ButtonInitClick(object sender, EventArgs e)
@@ -143,7 +176,7 @@ namespace Perceptron
 				
 				//MessageBox.Show("Inicia el perceptron"+" lr= "+lr+" epm= "+mEp);
 				p= new Perceptron(lr,mEp, gf, bmp, pictureBox1);
-				p.inicialize(entryList);
+				p.inicialize(entryList, v_w);
 			}
 			
 		}
