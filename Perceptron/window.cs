@@ -18,12 +18,13 @@ namespace Perceptron
 	/// </summary>
 	public partial class Window : Form
 	{
+		Perceptron p;
 		Brush b = new SolidBrush(Color.Purple);
 		Bitmap bmp;
 		Graphics gf;
 		
 		List<Entry> entryList;
-		float lr;
+		double lr;
 		int mEp;
 		Random rand;
 		List<float> v_w;
@@ -137,7 +138,7 @@ namespace Perceptron
 				MessageBox.Show("Por favor primero inicializa el vector de pesos");
 			}
 			else{
-				lr = float.Parse(textBoxLearningR.Text);
+				lr = double.Parse(textBoxLearningR.Text);
 				mEp = Int32.Parse(textBoxEpochM.Text);
 				
 				//MessageBox.Show("Inicia el perceptron"+" lr= "+lr+" epm= "+mEp);
