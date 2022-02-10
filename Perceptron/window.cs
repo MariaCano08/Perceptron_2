@@ -142,7 +142,7 @@ namespace Perceptron
 				mEp = Int32.Parse(textBoxEpochM.Text);
 				
 				//MessageBox.Show("Inicia el perceptron"+" lr= "+lr+" epm= "+mEp);
-				Perceptron p= new Perceptron(lr,mEp, gf, bmp, pictureBox1);
+				p= new Perceptron(lr,mEp, gf, bmp, pictureBox1);
 				p.inicialize(entryList);
 			}
 			
@@ -150,6 +150,7 @@ namespace Perceptron
 		void ButtonEvaluatePairsClick(object sender, EventArgs e)
 		{
 			//Se evaluaran todos los pares de puntos ordenados 
+			p.evaluate();
 		}
 		
 

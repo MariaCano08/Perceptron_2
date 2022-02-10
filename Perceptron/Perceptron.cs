@@ -29,6 +29,8 @@ namespace Perceptron
 		Bitmap bmp;
 		Bitmap bmp2;
 		PictureBox pb1;
+		List<float> v_wf;
+		
 		
 		public Perceptron(double theta, int epoch, Graphics gr, Bitmap bmp, PictureBox pb1)//v_x,v_y, theta 
 		{
@@ -72,7 +74,7 @@ namespace Perceptron
 //			double[] obj=new double[]{1.0,1.0};
 //			x.Add(obj);
 //			y.Add(1);
-			List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
+			//List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
 			
 			
 			while(done == false && 	epoch<limitEpoch ){//revisa tu condicion tochoii
@@ -97,6 +99,7 @@ namespace Perceptron
 					have=pw(x[i],v_w);//obtenida
 					y_obt.Add(have);
 			}
+			v_wf = v_w;
 			
 			if(epoch == limitEpoch){
 				MessageBox.Show("El algoritmo no convergió");
@@ -106,7 +109,7 @@ namespace Perceptron
 			}
 		}
 		void drawLine(List<float> v_w, double theta, double[] x){
-			double m=-(v_w[1]/v_w[2]);
+			double m=-(v_w[1]/v_w[2]);// REVISAR CALCULO DE LINEA W
 			double b= theta/v_w[2];
 			double y_ = m * x[0] + b;
 			double y_1 = m * x[1] + b;
@@ -160,7 +163,7 @@ namespace Perceptron
 
 		List<float> inicialize_w(int l)
 		{
-			List<float> v_w= new List<float>();
+			List<float>v_w= new List<float>();
 			for(int i=0;i<l;i++){
 				v_w.Add((float)random.Next(1, 5));
 			}
@@ -176,5 +179,56 @@ namespace Perceptron
 			}
 		}
 		
+		float calculateScale(bool axis, int pos){
+			float value;
+			if(axis){ // True - X
+				value = ((float)pos / 300) -1;
+			}
+			else{// False - Y
+				value = (((float)pos / 300) -1)* -1;
+			}
+			
+			return value;
+			
+		}
+		
+		public void evaluate(){
+			List<Entry> pairList = new List<Entry>();
+			
+			for(int y = 0; y<600; y+=30){
+				for( int x = 0; x <600; x+=30){
+					double []x_v = {calculateScale(true,x),calculateScale(false,y)};
+					double class_ = pw(x_v,v_wf);
+					if(class_ == 1){
+						pairList.Add(new Entry(x,y,true));
+					}
+					else{
+						pairList.Add(new Entry(x,y,false));
+					}
+					
+				}
+			}
+
+			drawClasses(pairList);
+			
+		}
+		
+		void drawClasses(List<Entry> le){
+			Brush b = new SolidBrush(Color.Purple);
+			gr.Clear(Color.Transparent);
+			for(int i = 0; i < le.Count; i++){
+				Entry aux = le[i];
+				if(aux.getClass()){ //If is LEFT - CLASS 1
+					gr.FillEllipse(b, new RectangleF(aux.getX(),aux.getY(), 15, 15));
+				}
+				else{ //If is RIGHT - CLASS 0
+					gr.FillEllipse(new SolidBrush(Color.GreenYellow), new RectangleF(aux.getX(),aux.getY(), 15, 15));
+					
+				}
+				
+			}
+			pb1.Image = bmp2;
+			pb1.Refresh();
+		}
 	}
 }
