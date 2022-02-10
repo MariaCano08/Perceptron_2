@@ -21,6 +21,7 @@ namespace Perceptron
 		Perceptron p;
 		Brush b = new SolidBrush(Color.Purple);
 		Bitmap bmp;
+		Bitmap bmp2;
 		Graphics gf;
 		
 		List<Entry> entryList;
@@ -124,7 +125,7 @@ namespace Perceptron
 				}
 				
 				
-				//drawLine(v_w,lr, new double[] {entryList[0].getX1(),entryList[0].getX2()});
+				drawLine(v_w,lr, new double[] {entryList[0].getX1(),entryList[0].getX2()});
 				MessageBox.Show("Vector inicializado");
 				
 			}
@@ -136,15 +137,18 @@ namespace Perceptron
 			double b_= theta/v_w[2];
 			double y_ = m * x[0] + b_;
 			double y_1 = m * x[1] + b_;
+			bmp2 = new Bitmap (pictureBox1.Width,pictureBox1.Height);
+			gf= Graphics.FromImage(bmp2);
+			gf.Clear(Color.Transparent);
 			
 			Pen pe = new Pen(Color.Red,10);
 			
 			//gr.DrawLine(p, 10, 80, 300, 300);}
-			gf.Clear(Color.Transparent);
+			
 			gf.DrawLine(pe, calculateScaleInv(true,x[0]), calculateScaleInv(false,y_), 
 			            calculateScaleInv(true,x[1]), calculateScaleInv(false,y_1));
 			
-			pictureBox1.Image = bmp;
+			pictureBox1.Image = bmp2;
 			pictureBox1.Refresh();
 		}
 		

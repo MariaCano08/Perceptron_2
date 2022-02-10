@@ -106,7 +106,7 @@ namespace Perceptron
 				MessageBox.Show("El algoritmo no convergió");
 				           
 			}else{
-				MessageBox.Show("Terminó el entrenamiento");
+				MessageBox.Show("Terminó el entrenamiento con "+epoch+" epocas");
 			}
 		}
 		void drawLine(List<float> v_w, double theta, double[] x){
