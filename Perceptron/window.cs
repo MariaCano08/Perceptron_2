@@ -61,6 +61,7 @@ namespace Perceptron
 			gf= Graphics.FromImage(bmp);
 			gf.Clear(Color.Transparent);
 			
+			
 			for(int i = 0; i < entryList.Count; i++){
 				Entry aux = entryList[i];
 				if(aux.getClass()){ //If is LEFT - CLASS 1
@@ -72,10 +73,6 @@ namespace Perceptron
 				}
 				
 			}
-			
-			//Perceptron p= new Perceptron();
-			//MessageBox.Show("Im here");
-			//p.inicialize();
 			
 			pictureBox1.Image = bmp;
 			pictureBox1.Refresh();
@@ -134,12 +131,15 @@ namespace Perceptron
 			if(textBoxLearningR.Text == "" || textBoxEpochM.Text == ""){
 				MessageBox.Show("Por favor revisa que hayas llenado los campos correctamente");
 			}
+			else if(v_w.Count == 0){
+				MessageBox.Show("Por favor primero inicializa el vector de pesos");
+			}
 			else{
 				lr = double.Parse(textBoxLearningR.Text);
 				mEp = Int32.Parse(textBoxEpochM.Text);
 				
-				MessageBox.Show("Inicia el perceptron"+" lr= "+lr+" epm= "+mEp);
-				p= new Perceptron(lr,mEp);
+				//MessageBox.Show("Inicia el perceptron"+" lr= "+lr+" epm= "+mEp);
+				Perceptron p= new Perceptron(lr,mEp, gf, bmp, pictureBox1);
 				p.inicialize(entryList);
 			}
 			
