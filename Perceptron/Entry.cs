@@ -25,6 +25,13 @@ namespace Perceptron
 			this.class_ = class_;
 		}
 		
+		public Entry(int X, int Y){
+			this.X = X;
+			this.Y = Y;
+			x1 = calculateScale(true,X);
+			x2 = calculateScale(false,Y);
+		}
+		
 		public int getX(){
 			return X;
 		}

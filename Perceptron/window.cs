@@ -72,9 +72,12 @@ namespace Perceptron
 				}
 				
 			}
+			//Pen p = new Pen(Color.Red);
+			//gf.DrawLine(p, 10, 80, 300, 300);
 			
-			pictureBox1.Image = bmp;
-			pictureBox1.Refresh();
+			//pictureBox1.Image = bmp;
+			pictureBox1.BackgroundImage = bmp;
+			//pictureBox1.Refresh();
 		}
 		
 		void PictureBox1Paint(object sender, PaintEventArgs e)

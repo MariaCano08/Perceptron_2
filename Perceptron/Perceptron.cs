@@ -27,15 +27,22 @@ namespace Perceptron
 		List<int> y= new List<int>();//salidas deseadas
 		Graphics gr;
 		Bitmap bmp;
+		Bitmap bmp2;
 		PictureBox pb1;
 		
 		public Perceptron(double theta, int epoch, Graphics gr, Bitmap bmp, PictureBox pb1)//v_x,v_y, theta 
 		{
 			this.theta=theta;
 			this.limitEpoch=epoch;
-			this.gr = gr;
+			//this.gr = gr;
 			this.bmp = bmp;
 			this.pb1 = pb1;
+			bmp2 = new Bitmap (pb1.Width,pb1.Height);
+			this.gr= Graphics.FromImage(bmp2);
+			//this.gr.Clear(Color.Transparent);
+			
+			//Pen p = new Pen(Color.Red);
+			//gr.DrawLine(p, 10, 80, 300, 300);
 		}
 		List<float> change_values(List<float> v_w, double theta, double err, double[] x)
 		{
@@ -67,13 +74,13 @@ namespace Perceptron
 			
 			
 			while(done == false && 	epoch<limitEpoch ){//revisa tu condicion tochoii
-				//done= true;
+				done= true;
 				for(int i=0;i<x.Count;i++){
 					have=pw(x[i],v_w);//obtenida
 					err=y[i]-have;
 					if((int)err!=0){
-						//done=false;
-						done=true;
+						done=false;
+						//done=true;
 						drawLine(v_w,theta,x[i]);
 						v_w=change_values(v_w,theta,err,x[i]);
 						//drawline(v_w)
@@ -83,25 +90,48 @@ namespace Perceptron
 				epoch++;
 			}
 			
-			List<double> y_obt = new List<double>();
+			List<double> y_obt = new List<double>(); //Vector de clases obtenidas
 			for(int i=0;i<x.Count;i++){
 					have=pw(x[i],v_w);//obtenida
 					y_obt.Add(have);
 			}
-			MessageBox.Show("Terminó el entrenamiento");
+			
+			if(epoch == limitEpoch){
+				MessageBox.Show("El algoritmo no convergió");
+				           
+			}else{
+				MessageBox.Show("Terminó el entrenamiento");
+			}
 		}
 		void drawLine(List<float> v_w, double theta, double[] x){
 			double m=-(v_w[1]/v_w[2]);
 			double b= theta/v_w[2];
 			double y_ = m * x[0] + b;
 			double y_1 = m * x[1] + b;
-			Pen p = new Pen(Color.Red);
-			gr.DrawLine(p, (int)x[0], (int)y_, (int)x[1], (int)y_1);
 			
-			pb1.Image = bmp;
+			Pen p = new Pen(Color.Red);
+			
+			//gr.DrawLine(p, 10, 80, 300, 300);}
+			gr.Clear(Color.Transparent);
+			gr.DrawLine(p, calculateScaleInv(true,x[0]), calculateScaleInv(false,y_), 
+			            calculateScaleInv(true,x[1]), calculateScaleInv(false,y_1));
+			
+			pb1.Image = bmp2;
 			pb1.Refresh();
 		}
 		
+		int calculateScaleInv(bool axis, double pos){
+			float value;
+			if(axis){ // True - X
+				value = ((float)pos + 1) *300;
+			}
+			else{// False - Y
+				value = (((float)pos * -1) +1) *300;
+			}
+			
+			return (int)value;
+			
+		}
 		
 		
 		bool activation_funtion(float u){
@@ -116,7 +146,7 @@ namespace Perceptron
 			double pw=0;
 			for (int i=0; i< x.Length;i++){
 				double xi = x[i];
-				float wi = w[i];
+				float wi = w[i+1];
 				pw+=xi*wi;
 			}
 			
