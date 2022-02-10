@@ -18,12 +18,13 @@ namespace Perceptron
 	/// </summary>
 	public partial class Window : Form
 	{
+		Perceptron p;
 		Brush b = new SolidBrush(Color.Purple);
 		Bitmap bmp;
 		Graphics gf;
 		
 		List<Entry> entryList;
-		float lr;
+		double lr;
 		int mEp;
 		Random rand;
 		List<float> v_w;
@@ -60,8 +61,6 @@ namespace Perceptron
 			gf= Graphics.FromImage(bmp);
 			gf.Clear(Color.Transparent);
 			
-			Perceptron p= new Perceptron();
-			p.inicialize();
 			for(int i = 0; i < entryList.Count; i++){
 				Entry aux = entryList[i];
 				if(aux.getClass()){ //If is LEFT - CLASS 1
@@ -136,10 +135,12 @@ namespace Perceptron
 				MessageBox.Show("Por favor revisa que hayas llenado los campos correctamente");
 			}
 			else{
-				lr = float.Parse(textBoxLearningR.Text);
+				lr = double.Parse(textBoxLearningR.Text);
 				mEp = Int32.Parse(textBoxEpochM.Text);
 				
 				MessageBox.Show("Inicia el perceptron"+" lr= "+lr+" epm= "+mEp);
+				p= new Perceptron(lr,mEp);
+				p.inicialize(entryList);
 			}
 			
 		}

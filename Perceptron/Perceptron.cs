@@ -24,7 +24,6 @@ namespace Perceptron
     	List<Entry> entryList= new List<Entry>();
     	List<double[]> x= new List<double[]>();//entradas
 		List<int> y= new List<int>();//salidas deseadas
-		List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
 		
 		public Perceptron(double theta, int epoch)//v_x,v_y, theta 
 		{
@@ -46,6 +45,8 @@ namespace Perceptron
 
 		public void inicialize(List<Entry> el){
 			
+			
+			List<float> v_w=inicialize_w(3);// donde la entrada es dependiente al tamaño de x
 			bool done=false;
 			int epoch=0;
 			double have=0,err;
