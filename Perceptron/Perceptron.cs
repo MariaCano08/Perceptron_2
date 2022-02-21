@@ -229,16 +229,16 @@ namespace Perceptron
 				}
 				
 			}
-			double [] x_ = x[0];
+			//double [] x_ = x[0];
 			
-			double m=-(v_wf[1]/v_wf[2]);// REVISAR CALCULO DE LINEA W
-			double b_= theta/v_wf[2];
-			double y_ = m * x_[0] + b_;
-			double y_1 = m * x_[1] + b_;
+			//double m=-(v_wf[1]/v_wf[2]);// REVISAR CALCULO DE LINEA W
+			//double b_= theta/v_wf[2];
+			//double y_ = m * x_[0] + b_;
+			//double y_1 = m * x_[1] + b_;
 			
-			Pen p = new Pen(Color.Red,10);
-			gr.DrawLine(p, calculateScaleInv(true,x_[0]), calculateScaleInv(false,y_), 
-			            calculateScaleInv(true,x_[1]), calculateScaleInv(false,y_1));
+			//Pen p = new Pen(Color.Red,10);
+			//gr.DrawLine(p, calculateScaleInv(true,x_[0]), calculateScaleInv(false,y_), 
+			//            calculateScaleInv(true,x_[1]), calculateScaleInv(false,y_1));
 			pb1.Image = bmp2;
 			pb1.Refresh();
 			
